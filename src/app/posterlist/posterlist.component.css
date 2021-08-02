@@ -1,0 +1,7 @@
+.poster__list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/*# sourceMappingURL=posterlist.component.css.map */
