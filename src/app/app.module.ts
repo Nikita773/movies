@@ -9,7 +9,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { PosterlistComponent } from './posterlist/posterlist.component';
 import { TitleComponent } from './title/title.component';
 import { MainComponent } from './main/main.component';
-import {StyleDirective} from "./directives/style.directive";
+import { ShadowCardDirective } from "./directives/style.directive";
 
 
 @NgModule({
@@ -20,7 +20,7 @@ import {StyleDirective} from "./directives/style.directive";
     PosterlistComponent,
     TitleComponent,
     MainComponent,
-    StyleDirective
+    ShadowCardDirective
   ],
   imports: [
     BrowserModule,

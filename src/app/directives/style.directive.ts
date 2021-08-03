@@ -1,19 +1,26 @@
-import {Directive, ElementRef, HostListener, Renderer2} from "@angular/core";
+import {Directive, ElementRef, HostListener, OnInit, Renderer2} from "@angular/core"
 
 @Directive({
-  selector: '[posterStyle]'
+  selector: '[shadowCard]'
 })
-export class StyleDirective {
-  constructor(private el: ElementRef, private r: Renderer2) {}
+export class ShadowCardDirective implements OnInit {
+  constructor(private el: ElementRef, private renderer: Renderer2) {}
 
-  @HostListener('mouseenter', ['$event']) onEnter(event: Event) {
-    this.r.setStyle(this.el.nativeElement, 'transform', 'scale(1.2)')
-    this.r.setStyle(this.el.nativeElement, 'box-shadow', '5px 2px 2px blue')
+  private transformElement(scale: number, boxShadowColor: string): void {
+    this.renderer.setStyle(this.el.nativeElement, 'transform', `scale(${scale})`);
+    this.renderer.setStyle(this.el.nativeElement, 'box-shadow', `6px 6px 2px 1px ${boxShadowColor}`);
   }
 
-  @HostListener('mouseleave', ['$event']) onLeave(event: Event) {
-    this.r.setStyle(this.el.nativeElement, 'transform', 'scale(1)')
-    this.r.setStyle(this.el.nativeElement, 'box-shadow', '5px 2px 2px #747474')
+  @HostListener('mouseenter') onEnter() {
+    this.transformElement(1.1, 'blue');
+  }
+
+  @HostListener('mouseleave') onLeave() {
+    this.transformElement(1, '#747474');
+  }
+
+  ngOnInit() : void {
+    this.transformElement(1, '#747474');
   }
 }
 

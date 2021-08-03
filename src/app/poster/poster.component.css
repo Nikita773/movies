@@ -1,12 +1,7 @@
-.poster__item {
+.poster__image {
   margin: 15px;
-  width: 150px;
-  height: 200px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  overflow: hidden;
-  box-shadow: 5px 2px 2px #747474;
+  width: 220px;
+  height: 330px;
 }
 
 /*# sourceMappingURL=poster.component.css.map */
