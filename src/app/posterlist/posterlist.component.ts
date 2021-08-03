@@ -12,24 +12,28 @@ import { takeUntil } from "rxjs/operators";
 })
 export class PosterlistComponent implements OnInit, OnDestroy {
   movies: IMovie[];
-  destroy$: Subject<boolean> = new Subject<boolean>();
+  private onDestroy$: Subject<void> = new Subject();
 
   constructor(private postersService: MoviesDataService) { }
+
+  ngOnInit() : void {
+    this.getData();
+  }
+
+  ngOnDestroy() : void {
+    this.onDestroy$.next();
+    this.onDestroy$.complete();
+  }
 
   trackById(index: number, movie: IMovie) : number {
     return movie.id;
   }
 
-  ngOnInit() :void {
+  getData() : void {
     this.postersService.getMovies()
-      .pipe(takeUntil(this.destroy$))
+      .pipe(takeUntil(this.onDestroy$))
       .subscribe((moviesInfo: IMoviesInfo) => {
         this.movies = moviesInfo.results;
       });
-  }
-
-  ngOnDestroy() : void {
-    this.destroy$.next(true);
-    this.destroy$.unsubscribe();
   }
 }

@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { IMovie } from "../models/movie.interface";
 
 @Component({
   selector: 'app-poster',
@@ -7,9 +6,10 @@ import { IMovie } from "../models/movie.interface";
   styleUrls: ['./poster.component.scss']
 })
 export class PosterComponent {
-  @Input() movie: IMovie;
+
+  @Input() posterPath : string;
 
   getMovieImage() : string {
-     return 'http://image.tmdb.org/t/p/w342' + this.movie.backdrop_path;
+     return 'http://image.tmdb.org/t/p/w342' + this.posterPath;
   }
 }
