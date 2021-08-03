@@ -1,6 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import { IMovie } from "../models/movie.interface";
-import { IMoviesInfo } from "../models/movies-info.interface";
 import { MoviesDataService } from "../services/posters.service";
 import { Subject } from "rxjs";
 import { takeUntil } from "rxjs/operators";
@@ -12,12 +11,12 @@ import { takeUntil } from "rxjs/operators";
 })
 export class PosterlistComponent implements OnInit, OnDestroy {
   movies: IMovie[];
-  private onDestroy$: Subject<void> = new Subject();
+  private onDestroy$ = new Subject<void>();
 
   constructor(private postersService: MoviesDataService) { }
 
   ngOnInit() : void {
-    this.getData();
+    this.getMovieData();
   }
 
   ngOnDestroy() : void {
@@ -29,11 +28,9 @@ export class PosterlistComponent implements OnInit, OnDestroy {
     return movie.id;
   }
 
-  getData() : void {
+  private getMovieData() : void {
     this.postersService.getMovies()
       .pipe(takeUntil(this.onDestroy$))
-      .subscribe((moviesInfo: IMoviesInfo) => {
-        this.movies = moviesInfo.results;
-      });
+      .subscribe(moviesInfo => this.movies = moviesInfo.results)
   }
 }
