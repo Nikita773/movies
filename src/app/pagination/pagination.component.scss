@@ -1,0 +1,23 @@
+.poster__pagination {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  padding-left: 0;
+  list-style: none;
+  border-radius: .25rem;
+}
+
+.page-link {
+  display: block;
+  padding: .5rem 1.25rem;
+  margin-left: -1px;
+  line-height: 1.25;
+  color: #737476;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  cursor: pointer;
+}
+
+li.active a {
+  color: #00bdbd;
+}

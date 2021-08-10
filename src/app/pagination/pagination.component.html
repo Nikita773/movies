@@ -1,0 +1,39 @@
+<nav aria-label="Page navigation example">
+  <ul class="poster__pagination pagination">
+    <li class="page-item"><a class="page-link" *ngIf="pageNo > 1" (click)="setPage(1)">First</a></li>
+    <li class="page-item"><a class="page-link" *ngIf="pageNo > 1" (click)="setPage(pageNo - 1)">Prev</a></li>
+    <li class="page-item"><a class="page-link" *ngIf="pageNo > 2">...</a>
+    </li>
+
+    <li class="page-item" routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}">
+      <a routerLink class="page-link"
+         *ngIf="pageNo > 1"
+         (click)="setPage(pageNo - 1)">{{ pageNo - 1 }}</a>
+    </li>
+
+    <li class="page-item" routerLinkActive="active">
+      <a routerLink class="page-link"
+         (click)="setPage(pageNo)">{{ pageNo }}</a>
+    </li>
+
+    <li class="page-item" routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}">
+      <a routerLink class="page-link"
+         *ngIf="pageNo < totalPages"
+         (click)="setPage(pageNo + 1)">{{ pageNo + 1 }}</a>
+    </li>
+
+    <li class="page-item">
+      <a class="page-link" *ngIf="pageNo < totalPages - 1">...</a>
+    </li>
+
+    <li class="page-item">
+      <a class="page-link" *ngIf="pageNo < totalPages" (click)="setPage(pageNo + 1)">Next</a>
+    </li>
+
+    <li class="page-item">
+      <a class="page-link" *ngIf="pageNo < totalPages" (click)="setPage(totalPages)">Last</a>
+    </li>
+  </ul>
+</nav>

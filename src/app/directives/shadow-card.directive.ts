@@ -1,4 +1,4 @@
-import {Directive, ElementRef, HostListener, OnInit, Renderer2} from "@angular/core"
+import { Directive, ElementRef, HostListener, OnInit, Renderer2 } from "@angular/core"
 
 const DARK_GRAY_COLOR = '#747474';
 const BLUE_COLOR = 'blue';
