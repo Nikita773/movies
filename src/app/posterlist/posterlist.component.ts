@@ -14,7 +14,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 export class PosterlistComponent implements OnInit, OnDestroy {
   movies: IMovie[];
   totalPages: number;
-  page: number = 1;
+  page: number;
 
   private onDestroy$ = new Subject<void>();
 
@@ -46,7 +46,7 @@ export class PosterlistComponent implements OnInit, OnDestroy {
       })
   }
 
-  onPageChange(pageNo: number) {
+  onPageChange(pageNo: number): void {
     this.router.navigate(['movies'], {
       queryParams: {
         page: pageNo
