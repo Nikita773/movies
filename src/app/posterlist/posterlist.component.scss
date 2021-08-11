@@ -1,5 +1,10 @@
-.poster__list {
+.poster {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
+  flex-direction: column;
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }

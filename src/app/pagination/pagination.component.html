@@ -1,0 +1,25 @@
+<nav aria-label="Page navigation example">
+  <ul class="poster__pagination pagination">
+    <li *ngIf="pageNo > 1"><span class="page-item" (click)="setPage(1)">First</span></li>
+    <li *ngIf="pageNo > 1"><span class="page-item" (click)="setPage(pageNo - 1)">Prev</span></li>
+    <li *ngIf="pageNo > 2"><span class="page-item" >...</span></li>
+    <li *ngIf="pageNo > 1">
+      <span class="page-item"
+        (click)="setPage(pageNo - 1)">{{ pageNo - 1 }}
+      </span>
+    </li>
+    <li>
+      <span class="page-item page-item--active"
+        (click)="setPage(pageNo)">{{ pageNo }}
+      </span>
+    </li>
+    <li *ngIf="pageNo < totalPages">
+      <span class="page-item"
+        (click)="setPage(pageNo + 1)">{{ pageNo + 1 }}
+      </span>
+    </li>
+    <li *ngIf="pageNo < totalPages - 1"><span class="page-item" >...</span></li>
+    <li *ngIf="pageNo < totalPages"><span class="page-item" (click)="setPage(pageNo + 1)">Next</span></li>
+    <li *ngIf="pageNo < totalPages"><span class="page-item" (click)="setPage(totalPages)">Last</span></li>
+  </ul>
+</nav>

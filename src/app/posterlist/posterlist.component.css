@@ -1,7 +1,12 @@
-.poster__list {
+.poster {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+}
+.poster__list {
+  display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 /*# sourceMappingURL=posterlist.component.css.map */
