@@ -1,0 +1,63 @@
+hr {
+  border: 1px solid #111111;
+}
+
+.movie__wrapper {
+  position: relative;
+  height: calc(100% - 50px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.movie__cover {
+  opacity: 0.8;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.movie__container {
+  display: flex;
+  width: 60%;
+}
+.movie__image {
+  width: 220px;
+  height: 330px;
+  margin-right: 30px;
+}
+
+.content {
+  font-family: "Roboto", sans-serif;
+  margin-top: 10px;
+  color: #111;
+}
+.content__info {
+  margin: 20px 0;
+  display: flex;
+}
+.content__item {
+  border-right: 2px solid #111111;
+  padding-right: 15px;
+  padding-left: 5px;
+  font-size: 14px;
+  font-weight: bold;
+}
+.content__item:first-child {
+  padding-left: 0;
+}
+.content__item:last-child {
+  border: none;
+}
+.content__overview {
+  margin: 20px 0;
+  font-size: 14px;
+  font-weight: bold;
+  font-style: italic;
+}
+
+/*# sourceMappingURL=movie-details.component.css.map */

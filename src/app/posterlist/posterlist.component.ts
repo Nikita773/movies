@@ -64,4 +64,8 @@ export class PosterlistComponent implements OnInit, OnDestroy {
       )
       .subscribe(page => this.getMovieData(page));
   }
+
+  onMoviePageChange(id: number): void {
+    this.router.navigate(['movies', id]);
+  }
 }

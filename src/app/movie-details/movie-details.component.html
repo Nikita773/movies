@@ -1,0 +1,20 @@
+<div class="movie__wrapper">
+  <div class="movie__cover" [style.background-image]="'url(' + getMovieBackground() + ')'"></div>
+  <div class="movie__container container">
+    <img [src]="getMovieImage()" alt="movie" class="movie__image">
+    <div class="movie__content content">
+      <h2 class="content__title">{{ title }} ({{ date | dateCut }})</h2>
+      <div class="content__info">
+        <span class="content__item vr">Score: {{ score }}</span>
+        <span class="content__item">Popular: {{ popularity }}</span>
+        <span class="content__item">Date release: {{ date | dateFormat }}</span>
+      </div>
+      <hr>
+      <div class="content__overview">
+        <p>{{ overview }}</p>
+      </div>
+      <hr>
+    </div>
+  </div>
+</div>
+

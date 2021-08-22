@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'app-poster',
@@ -8,8 +8,17 @@ import { Component, Input } from '@angular/core';
 export class PosterComponent {
 
   @Input() posterPath: string;
+  @Input() id: number;
+  @Output() onChangeEventEmitter = new EventEmitter<number>();
+
+  constructor() {}
 
   getMovieImage(): string {
      return 'http://image.tmdb.org/t/p/w342' + this.posterPath;
   }
+
+  setMovie(id: number): void {
+    this.onChangeEventEmitter.emit(id)
+  }
+
 }
