@@ -4,7 +4,7 @@ import { MoviesInfoDataService } from "../services/movie-details.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { map, takeUntil } from "rxjs/operators";
 import { IMovie } from "../models/movie.interface";
-import MoviesHelper from "../helpers/movies-helper";
+import { MoviesHelper } from "../helpers/movies-helper";
 
 @Component({
   selector: 'app-movie-details',
@@ -13,16 +13,15 @@ import MoviesHelper from "../helpers/movies-helper";
 })
 export class MovieDetailsComponent implements OnInit, OnDestroy {
   movieDetails: IMovie;
+  moviesHelper = MoviesHelper
 
   private onDestroy$ = new Subject<void>();
 
   constructor(
-    public moviesHelper: MoviesHelper,
     private moviesInfoDataService: MoviesInfoDataService,
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {}
-
 
   ngOnInit(): void {
     this.onActivatedRoute();
