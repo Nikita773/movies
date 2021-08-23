@@ -7,7 +7,7 @@ import { IMovie } from "../models/movie.interface";
 export class MoviesInfoDataService {
   constructor(private http: HttpClient) {}
 
-  getMovieInfo(id: number): Observable<IMovie> {
+  getMovieInfoById(id: number): Observable<IMovie> {
     return this.http.get<IMovie>(`http://api.themoviedb.org/3/movie/${id}?api_key=ebea8cfca72fdff8d2624ad7bbf78e4c`);
   }
 }

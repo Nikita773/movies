@@ -11,7 +11,7 @@ hr {
     align-items: center;
   }
   &__cover {
-    opacity: 0.8;
+    opacity: 0.6;
     top: 0;
     left: 0;
     bottom: 0;
@@ -30,6 +30,7 @@ hr {
     width: 220px;
     height: 330px;
     margin-right: 30px;
+    box-shadow: 0 0 5px 3px rgba(0,0,0,0.75);
   }
 }
 

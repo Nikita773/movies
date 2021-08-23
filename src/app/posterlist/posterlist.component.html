@@ -2,9 +2,8 @@
   <div class="poster__list">
     <app-poster *ngFor = "let movie of movies;
       trackBy: trackById"
-      (onChangeEventEmitter)="onMoviePageChange($event)"
-      [posterPath]="movie.poster_path"
-      [id]="movie.id">
+      (onPosterClick)="onMoviePageChange(movie.id)"
+      [posterPath]="movie.poster_path">
     </app-poster>
   </div>
   <app-pagination

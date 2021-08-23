@@ -15,8 +15,8 @@ import { MainComponent } from './main/main.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { MovieDetailsComponent } from "./movie-details/movie-details.component";
 
-import { DateFormatPipe } from './pipes/date-format.pipe';
-import { DateCutPipe } from "./pipes/date-cut.pipe";
+import { DateReversePipe } from './pipes/date-reverse.pipe';
+import { DateToYearPipe } from "./pipes/date-to-year.pipe";
 
 @NgModule({
   declarations: [
@@ -29,8 +29,8 @@ import { DateCutPipe } from "./pipes/date-cut.pipe";
     ShadowCardDirective,
     PaginationComponent,
     MovieDetailsComponent,
-    DateFormatPipe,
-    DateCutPipe,
+    DateReversePipe,
+    DateToYearPipe,
   ],
   imports: [
     BrowserModule,

@@ -8,17 +8,13 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 export class PosterComponent {
 
   @Input() posterPath: string;
-  @Input() id: number;
-  @Output() onChangeEventEmitter = new EventEmitter<number>();
-
-  constructor() {}
+  @Output() onPosterClick = new EventEmitter<void>();
 
   getMovieImage(): string {
      return 'http://image.tmdb.org/t/p/w342' + this.posterPath;
   }
 
-  setMovie(id: number): void {
-    this.onChangeEventEmitter.emit(id)
+  setMovie(): void {
+    this.onPosterClick.emit();
   }
-
 }
