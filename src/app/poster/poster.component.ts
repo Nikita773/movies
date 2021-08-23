@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { MoviesHelper } from "../helpers/movies-helper";
 
 @Component({
   selector: 'app-poster',
@@ -6,10 +7,12 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./poster.component.scss'],
 })
 export class PosterComponent {
-
   @Input() posterPath: string;
+  @Output() onPosterClick = new EventEmitter<void>();
 
-  getMovieImage(): string {
-     return 'http://image.tmdb.org/t/p/w342' + this.posterPath;
+  moviesHelper = MoviesHelper
+
+  setMovie(): void {
+    this.onPosterClick.emit();
   }
 }

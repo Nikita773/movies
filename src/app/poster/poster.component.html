@@ -1,3 +1,3 @@
-<div class="poster__item">
-  <img shadowCard class="poster__image" [src] = getMovieImage() alt="movie">
+<div class="poster__item" (click)="setMovie()">
+  <img shadowCard class="poster__image" [src]=moviesHelper.getMovieImageUrl(posterPath) alt="movie">
 </div>

@@ -1,0 +1,22 @@
+<div class="movie__wrapper" *ngIf="movieDetails">
+  <div class="movie__cover"
+    [ngStyle]="{'background-image':'url(' + moviesHelper.getMovieImageUrl(movieDetails.backdrop_path) + ')'}">
+  </div>
+  <div class="movie__container container">
+    <img [src]="moviesHelper.getMovieImageUrl(movieDetails.poster_path)" alt="movie" class="movie__image">
+    <div class="movie__content content">
+      <h2 class="content__title">{{ movieDetails.title }} ({{ movieDetails.release_date | dateToYear }})</h2>
+      <div class="content__info">
+        <span class="content__item">Score: {{ movieDetails.vote_average }}</span>
+        <span class="content__item">Popular: {{ movieDetails.popularity }}</span>
+        <span class="content__item">Date release: {{ movieDetails.release_date | dateReverse }}</span>
+      </div>
+      <hr>
+      <div class="content__overview">
+        <p>{{ movieDetails.overview }}</p>
+      </div>
+      <hr>
+    </div>
+  </div>
+</div>
+

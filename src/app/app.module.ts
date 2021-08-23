@@ -13,8 +13,10 @@ import { PosterlistComponent } from './posterlist/posterlist.component';
 import { TitleComponent } from './title/title.component';
 import { MainComponent } from './main/main.component';
 import { PaginationComponent } from './pagination/pagination.component';
+import { MovieDetailsComponent } from "./movie-details/movie-details.component";
 
-
+import { DateReversePipe } from './pipes/date-reverse.pipe';
+import { DateToYearPipe } from "./pipes/date-to-year.pipe";
 
 @NgModule({
   declarations: [
@@ -26,6 +28,9 @@ import { PaginationComponent } from './pagination/pagination.component';
     MainComponent,
     ShadowCardDirective,
     PaginationComponent,
+    MovieDetailsComponent,
+    DateReversePipe,
+    DateToYearPipe,
   ],
   imports: [
     BrowserModule,
@@ -36,4 +41,4 @@ import { PaginationComponent } from './pagination/pagination.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

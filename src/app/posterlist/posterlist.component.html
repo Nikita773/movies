@@ -1,7 +1,9 @@
 <div class="container poster">
   <div class="poster__list">
     <app-poster *ngFor = "let movie of movies;
-     trackBy: trackById" [posterPath]="movie.poster_path">
+      trackBy: trackById"
+      (onPosterClick)="onMoviePageChange(movie.id)"
+      [posterPath]="movie.poster_path">
     </app-poster>
   </div>
   <app-pagination
