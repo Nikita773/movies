@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { IMovie } from "../models/movie.interface";
 import { MoviesDataService } from "../services/posters.service";
 import { Subject} from "rxjs";
-import {distinctUntilChanged, map, switchMap, takeUntil, tap} from "rxjs/operators";
+import { distinctUntilChanged, map, switchMap, takeUntil, tap } from "rxjs/operators";
 import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
@@ -48,9 +48,10 @@ export class PosterlistComponent implements OnInit, OnDestroy {
   getMovieData(): void {
     this.activatedRoute.queryParams
       .pipe(
-        switchMap(queryParams => this.moviesDataService.getMovies(queryParams.page ? +queryParams.page : 1)),
+        map(queryParams => queryParams.page ? +queryParams.page : 1),
         distinctUntilChanged(),
-        tap(queryParams => this.page = queryParams.page),
+        tap(page => this.page = page),
+        switchMap(queryParams => this.moviesDataService.getMovies(queryParams)),
         takeUntil(this.onDestroy$),
       )
       .subscribe(moviesInfo => {

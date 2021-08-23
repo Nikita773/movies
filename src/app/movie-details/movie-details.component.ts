@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from "rxjs";
 import { MoviesInfoDataService } from "../services/movie-details.service";
 import { ActivatedRoute, Router } from "@angular/router";
-import {distinctUntilChanged, map, switchMap, takeUntil} from "rxjs/operators";
+import { distinctUntilChanged, map, switchMap, takeUntil } from "rxjs/operators";
 import { IMovie } from "../models/movie.interface";
 import { MoviesHelper } from "../helpers/movies-helper";
 
@@ -35,9 +35,10 @@ export class MovieDetailsComponent implements OnInit, OnDestroy {
   getMoviesInfoData(): void {
     this.activatedRoute.params
       .pipe(
+        map(params => params.id),
         distinctUntilChanged(),
+        switchMap(params => this.moviesInfoDataService.getMovieInfoById(params)),
         takeUntil(this.onDestroy$),
-        switchMap(params => this.moviesInfoDataService.getMovieInfoById(params.id))
       )
       .subscribe(movieDetails => this.movieDetails = movieDetails);
   }
