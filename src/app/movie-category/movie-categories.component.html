@@ -1,0 +1,9 @@
+<div class="movie__categories">
+  <a *ngFor="let category of categories; let i = index;"
+     (click)=
+       "setCategory(category);
+        setIndex(i);"
+     [class.active]="selectedIndex === i"
+     class="movie__category">{{ moviesHelper.categoryTransform(category) }}
+  </a>
+</div>

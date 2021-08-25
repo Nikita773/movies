@@ -1,9 +1,9 @@
-.poster {
+.poster-list {
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
-.poster__list {
+.poster-list__wrapper {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
