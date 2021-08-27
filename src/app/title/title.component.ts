@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {Categories} from "../enums/movie-categories-keys";
+import {movieCategories} from "../movies-constants";
 
 @Component({
   selector: 'app-title',
   templateUrl: './title.component.html',
-  styleUrls: ['./title.component.css']
+  styleUrls: ['./title.component.scss']
 })
 export class TitleComponent {
-  category = 'Now playing';
+  @Input() category: Categories;
+  movieCategories = movieCategories;
 }

@@ -14,6 +14,7 @@ import { TitleComponent } from './title/title.component';
 import { MainComponent } from './main/main.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { MovieDetailsComponent } from "./movie-details/movie-details.component";
+import { MovieCategoriesComponent } from './movie-category/movie-categories.component';
 
 import { DateReversePipe } from './pipes/date-reverse.pipe';
 import { DateToYearPipe } from "./pipes/date-to-year.pipe";
@@ -29,6 +30,7 @@ import { DateToYearPipe } from "./pipes/date-to-year.pipe";
     ShadowCardDirective,
     PaginationComponent,
     MovieDetailsComponent,
+    MovieCategoriesComponent,
     DateReversePipe,
     DateToYearPipe,
   ],

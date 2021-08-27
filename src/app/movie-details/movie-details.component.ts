@@ -13,7 +13,7 @@ import { MoviesHelper } from "../helpers/movies-helper";
 })
 export class MovieDetailsComponent implements OnInit, OnDestroy {
   movieDetails: IMovie;
-  moviesHelper = MoviesHelper
+  moviesHelper = MoviesHelper;
 
   private onDestroy$ = new Subject<void>();
 

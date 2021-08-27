@@ -1,0 +1,9 @@
+<div class="movie__categories">
+  <a *ngFor="let category of categories | keyvalue"
+     (click)=
+      "setCategory(category.key);
+       setSelectedCategory(category.key)"
+     [ngClass]="{'active': selectedCategory === category.key}"
+     class="movie__category">{{ category.value }}
+  </a>
+</div>

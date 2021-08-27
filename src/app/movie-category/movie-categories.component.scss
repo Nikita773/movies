@@ -1,0 +1,14 @@
+.movie {
+  &__categories {
+    color: #fff;
+    margin-right: 40px;
+  }
+  &__category {
+    margin: 20px;
+    cursor: pointer;
+    padding-bottom: 2px;
+  }
+}
+.active {
+  border-bottom: 2px solid;
+}

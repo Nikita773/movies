@@ -1,9 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { IMovie } from "../models/movie.interface";
-import { MoviesDataService } from "../services/posters.service";
-import { Subject} from "rxjs";
-import { distinctUntilChanged, map, switchMap, takeUntil, tap } from "rxjs/operators";
-import { ActivatedRoute, Router } from "@angular/router";
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {IMovie} from "../models/movie.interface";
+import {MoviesDataService} from "../services/posters.service";
+import {Subject} from "rxjs";
+import {switchMap, takeUntil} from "rxjs/operators";
+import {ActivatedRoute, Router} from "@angular/router";
+import {Categories} from "../enums/movie-categories-keys";
 
 @Component({
   selector: 'app-poster-list',
@@ -15,6 +16,7 @@ export class PosterlistComponent implements OnInit, OnDestroy {
   movies: IMovie[];
   totalPages: number;
   page: number;
+  category: Categories;
 
   private onDestroy$ = new Subject<void>();
 
@@ -40,6 +42,7 @@ export class PosterlistComponent implements OnInit, OnDestroy {
   onPageChange(pageNo: number): void {
     this.router.navigate(['movies'], {
       queryParams: {
+        category: this.category,
         page: pageNo
       }
     });
@@ -48,10 +51,14 @@ export class PosterlistComponent implements OnInit, OnDestroy {
   getMovieData(): void {
     this.activatedRoute.queryParams
       .pipe(
-        map(queryParams => queryParams.page ? +queryParams.page : 1),
-        distinctUntilChanged(),
-        tap(page => this.page = page),
-        switchMap(queryParams => this.moviesDataService.getMovies(queryParams)),
+        switchMap(queryParams => {
+          const category = queryParams.category ? queryParams.category : Categories.NOW_PLAYING;
+          const newPage = queryParams.page ? +queryParams.page : 1;
+          this.page = newPage;
+          this.category = category;
+
+          return this.moviesDataService.getMovies(category, newPage);
+        }),
         takeUntil(this.onDestroy$),
       )
       .subscribe(moviesInfo => {

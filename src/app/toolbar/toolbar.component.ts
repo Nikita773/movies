@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {Router} from "@angular/router";
+import {movieCategories} from "../movies-constants";
 
 @Component({
   selector: 'app-toolbar',
@@ -6,5 +8,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent {
-  title: string = 'Movies';
+  title = 'Movies';
+  movieCategories = movieCategories;
+
+  constructor(private router: Router) {}
+
+  onCategoryChange(category: string): void {
+    this.router.navigate(['movies'], {
+      queryParams: {
+        category: category
+      }
+    });
+  }
+
 }

@@ -1,0 +1,15 @@
+.movie__categories {
+  color: #fff;
+  margin-right: 40px;
+}
+.movie__category {
+  margin: 20px;
+  cursor: pointer;
+  padding-bottom: 2px;
+}
+
+.active {
+  border-bottom: 2px solid;
+}
+
+/*# sourceMappingURL=movie-categories.component.css.map */
