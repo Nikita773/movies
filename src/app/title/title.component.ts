@@ -1,4 +1,6 @@
 import {Component, Input} from '@angular/core';
+import {Categories} from "../enums/movie-categories-keys";
+import {movieCategories} from "../movies-constants";
 
 @Component({
   selector: 'app-title',
@@ -6,5 +8,6 @@ import {Component, Input} from '@angular/core';
   styleUrls: ['./title.component.scss']
 })
 export class TitleComponent {
-  @Input() category: string;
+  @Input() category: Categories;
+  movieCategories = movieCategories;
 }

@@ -1,22 +1,26 @@
-import {Component, EventEmitter, Output} from '@angular/core';
-import {MoviesHelper} from "../helpers/movies-helper";
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-movie-categories',
   templateUrl: './movie-categories.component.html',
   styleUrls: ['./movie-categories.component.scss']
 })
-export class MovieCategoriesComponent {
+export class MovieCategoriesComponent implements OnInit {
+  @Input() categories: Map<string,string>;
   @Output() onClickCategory = new EventEmitter<string>();
-  categories = ['now_playing', 'popular', 'top_rated', 'upcoming'];
-  selectedIndex = 0;
-  moviesHelper = MoviesHelper;
+  selectedCategory: string;
+
+  ngOnInit(): void {
+    if (this.categories) {
+      this.selectedCategory = Array.from(this.categories.keys())[0];
+    }
+  }
 
   setCategory(category: string): void {
     this.onClickCategory.emit(category);
   }
 
-  setIndex(index: number): void {
-    this.selectedIndex = index;
+  setSelectedCategory(category: string): void {
+    this.selectedCategory = category;
   }
 }

@@ -1,6 +1,6 @@
 <div class="container poster-list">
   <app-title
-    [category]="moviesHelper.categoryTransform(category)"
+    [category]="category"
   ></app-title>
   <div class="poster-list__wrapper">
     <app-poster *ngFor = "let movie of movies;

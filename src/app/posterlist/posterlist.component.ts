@@ -1,10 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { IMovie } from "../models/movie.interface";
-import { MoviesDataService } from "../services/posters.service";
-import { Subject} from "rxjs";
-import { switchMap, takeUntil } from "rxjs/operators";
-import { ActivatedRoute, Router } from "@angular/router";
-import { MoviesHelper } from "../helpers/movies-helper";
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {IMovie} from "../models/movie.interface";
+import {MoviesDataService} from "../services/posters.service";
+import {Subject} from "rxjs";
+import {switchMap, takeUntil} from "rxjs/operators";
+import {ActivatedRoute, Router} from "@angular/router";
+import {Categories} from "../enums/movie-categories-keys";
 
 @Component({
   selector: 'app-poster-list',
@@ -16,8 +16,7 @@ export class PosterlistComponent implements OnInit, OnDestroy {
   movies: IMovie[];
   totalPages: number;
   page: number;
-  category: string;
-  moviesHelper = MoviesHelper;
+  category: Categories;
 
   private onDestroy$ = new Subject<void>();
 
@@ -53,10 +52,11 @@ export class PosterlistComponent implements OnInit, OnDestroy {
     this.activatedRoute.queryParams
       .pipe(
         switchMap(queryParams => {
-          const category = queryParams.category ? queryParams.category : 'now_playing';
+          const category = queryParams.category ? queryParams.category : Categories.NOW_PLAYING;
           const newPage = queryParams.page ? +queryParams.page : 1;
           this.page = newPage;
           this.category = category;
+
           return this.moviesDataService.getMovies(category, newPage);
         }),
         takeUntil(this.onDestroy$),
