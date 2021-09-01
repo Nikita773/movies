@@ -1,0 +1,9 @@
+<div class="movie-search-container search" *ngFor="let movie of movieDataList">
+  <div (click)="onMoviePageOpen(movie.id)" class="search__content">
+    <img class="search__image" [src]=moviesHelper.getMovieImageUrl(movie.poster_path) alt="movie" width="50" height="70">
+    <p class="search__title">{{movie.title}}({{movie.release_date | dateToYear}})</p>
+    <div class="search__vote">{{movie.vote_average}}</div>
+  </div>
+</div>
+
+

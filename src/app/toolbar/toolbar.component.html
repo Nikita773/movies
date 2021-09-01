@@ -1,5 +1,6 @@
 <div class="toolbar">
   <a class="toolbar__link" [routerLink] = "['/movies']">{{ title }}</a>
+  <app-movie-search></app-movie-search>
   <app-movie-categories
     [categories]="movieCategories"
     (onClickCategory) = "onCategoryChange($event)"

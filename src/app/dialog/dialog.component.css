@@ -1,0 +1,20 @@
+.search__content {
+  display: flex;
+  align-items: flex-start;
+  padding: 10px;
+  cursor: pointer;
+}
+.search__content:hover {
+  background-color: #dee2e6;
+}
+.search__title {
+  margin-left: 10px;
+  color: #0075c1;
+}
+.search__vote {
+  margin-left: auto;
+  background-color: orange;
+  padding: 5px;
+}
+
+/*# sourceMappingURL=dialog.component.css.map */
