@@ -18,10 +18,9 @@ export class MovieSearchDialogComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public data: IMovieSearchData) {}
 
   ngOnInit() {
-    if (this.movieDataList) {
+    if (this.data) {
       this.movieDataList = this.data.movieSearchData;
     }
-    return;
   }
 
   onMoviePageOpen(id: number): void {
