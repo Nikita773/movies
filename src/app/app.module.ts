@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { AppRoutingModule } from "./app-routing.module";
 
@@ -18,6 +18,12 @@ import { MovieCategoriesComponent } from './movie-category/movie-categories.comp
 
 import { DateReversePipe } from './pipes/date-reverse.pipe';
 import { DateToYearPipe } from "./pipes/date-to-year.pipe";
+import { MovieSearchComponent } from './movie-search/movie-search.component';
+
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {MatDialogModule} from "@angular/material/dialog";
+import { MovieSearchDialogComponent } from './movie-search-dialog/movie-search-dialog.component';
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -33,13 +39,19 @@ import { DateToYearPipe } from "./pipes/date-to-year.pipe";
     MovieCategoriesComponent,
     DateReversePipe,
     DateToYearPipe,
+    MovieSearchComponent,
+    MovieSearchDialogComponent
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpClientModule,
-    AppRoutingModule
-  ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpClientModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        BrowserAnimationsModule,
+        MatDialogModule,
+        MatInputModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
