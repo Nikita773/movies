@@ -13,7 +13,7 @@ import {MoviesHelper} from "../helpers/movies-helper";
 export class MovieSearchDialogComponent implements OnInit {
   moviesHelper = MoviesHelper;
   movieDataList: IMovie[];
-  onHandleClick = new EventEmitter<number>();
+  onMovieClick = new EventEmitter<number>();
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: IMovieSearchData) {}
 
@@ -24,6 +24,6 @@ export class MovieSearchDialogComponent implements OnInit {
   }
 
   onMoviePageOpen(id: number): void {
-    this.onHandleClick.emit(id);
+    this.onMovieClick.emit(id);
   }
 }
