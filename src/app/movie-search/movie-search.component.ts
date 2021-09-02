@@ -4,7 +4,7 @@ import {debounceTime, distinctUntilChanged, filter, switchMap, takeUntil} from '
 import {FormControl} from "@angular/forms";
 import {IMovie} from "../models/movie.interface";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
-import {DialogComponent} from "../dialog/dialog.component";
+import {MovieSearchDialogComponent} from "../movie-search-dialog/movie-search-dialog.component";
 import {Subject} from "rxjs";
 import {Router} from "@angular/router";
 
@@ -17,7 +17,7 @@ export class MovieSearchComponent implements OnInit, OnDestroy {
 
   searchControl: FormControl;
   movieInfo: IMovie[];
-  matDialogRef: MatDialogRef<DialogComponent>;
+  matDialogRef: MatDialogRef<MovieSearchDialogComponent>;
 
   private onDestroy$ = new Subject<void>();
 
@@ -31,7 +31,7 @@ export class MovieSearchComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.searchControl = new FormControl();
       this.searchControl.valueChanges.pipe(
-      debounceTime(250),
+      debounceTime(500),
       distinctUntilChanged(),
       filter((text:string) => {
         if (text.length < 3 && this.matDialogRef) {
@@ -41,13 +41,11 @@ export class MovieSearchComponent implements OnInit, OnDestroy {
 
         return text.length > 2;
       }),
-      switchMap(value => {
-        return this.moviesInfoDataService.searchMovies(value);
-      }),
+      switchMap(value => this.moviesInfoDataService.getMovieInfoByTitle(value)),
       takeUntil(this.onDestroy$))
       .subscribe(movie => {
         this.movieInfo = movie.results.slice(0,5);
-        this.openDialog();
+        this.openSearchedMovies(this.movieInfo);
       })
   }
 
@@ -64,14 +62,14 @@ export class MovieSearchComponent implements OnInit, OnDestroy {
     }
   }
 
-  openDialog(): void {
+  openSearchedMovies(movieInfo: IMovie[]): void {
     if (this.matDialogRef) {
-      this.matDialogRef.componentInstance.movieDataList = this.movieInfo;
+      this.matDialogRef.componentInstance.movieDataList = movieInfo;
       return;
     }
 
-   this.matDialogRef = this.matDialog.open(DialogComponent, {
-      data: this.movieInfo,
+   this.matDialogRef = this.matDialog.open(MovieSearchDialogComponent, {
+      data: { movieSearchData: this.movieInfo },
       width: '500px',
       hasBackdrop: false,
       position: {
@@ -80,9 +78,10 @@ export class MovieSearchComponent implements OnInit, OnDestroy {
       },
     });
 
-    const subscribeDialog = this.matDialogRef.componentInstance.onSubmitClick.subscribe(id =>
+    this.matDialogRef.componentInstance.onHandleClick.pipe(
+      takeUntil(this.onDestroy$))
+      .subscribe(id =>
       this.router.navigate(['movies', id])
     );
-    this.matDialogRef.afterClosed().subscribe(() => subscribeDialog.unsubscribe);
   }
 }

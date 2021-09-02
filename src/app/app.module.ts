@@ -22,7 +22,7 @@ import { MovieSearchComponent } from './movie-search/movie-search.component';
 
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatDialogModule} from "@angular/material/dialog";
-import { DialogComponent } from './dialog/dialog.component';
+import { MovieSearchDialogComponent } from './movie-search-dialog/movie-search-dialog.component';
 import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
@@ -40,7 +40,7 @@ import {MatInputModule} from "@angular/material/input";
     DateReversePipe,
     DateToYearPipe,
     MovieSearchComponent,
-    DialogComponent
+    MovieSearchDialogComponent
   ],
     imports: [
         BrowserModule,

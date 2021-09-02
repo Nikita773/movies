@@ -12,7 +12,7 @@ export class MoviesInfoDataService {
     return this.http.get<IMovie>(`http://api.themoviedb.org/3/movie/${id}?api_key=ebea8cfca72fdff8d2624ad7bbf78e4c`);
   }
 
-  searchMovies(e: string):Observable<IMoviesInfo>{
-    return this.http.get<IMoviesInfo>(`https://api.themoviedb.org/3/search/movie?api_key=ebea8cfca72fdff8d2624ad7bbf78e4c&query=${e}`)
+  getMovieInfoByTitle(title: string):Observable<IMoviesInfo>{
+    return this.http.get<IMoviesInfo>(`https://api.themoviedb.org/3/search/movie?api_key=ebea8cfca72fdff8d2624ad7bbf78e4c&query=${title}`)
   }
 }
